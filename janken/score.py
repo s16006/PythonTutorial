@@ -1,1 +1,1 @@
-# 'score.txt'のデータを読み取り、現状の戦績を表示するだけ。
+i = open('Tutorial/janken/score.txt', 'r')
