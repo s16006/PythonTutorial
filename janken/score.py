@@ -1,1 +1,1 @@
-i = open('Tutorial/janken/score.txt', 'r')
+i = open('score.txt', 'r')
