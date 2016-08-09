@@ -28,6 +28,7 @@ def judgement(player,  computer):
 
 def save_score(result):
     i = {'win':'勝ち', 'lose':'負け', 'draw':'あいこ'}
+
     if result == '勝ち':
         return 'win'
     if result == '負け':
@@ -35,9 +36,7 @@ def save_score(result):
     if result == 'あいこ':
         return 'draw'
 
-    f = open('Tutorial/janken/score.txt', 'w')
-    f.write(save_score(result))
-    f.close
+
 
     # 'score.txt'に戦績を保存。
     # win:x lose:y draw:zのディクショナリデータを保存する。
@@ -55,3 +54,6 @@ if __name__ == '__main__':
     save_score(result)
     print(result)
     print(player, computer)
+    f = open('score.txt', 'a')
+    f.write(save_score(result))
+    f.close
