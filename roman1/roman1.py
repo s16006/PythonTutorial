@@ -1,3 +1,5 @@
+import re
+
 roman_numeral_map = (('M', 1000),
                      ('CM', 900),
                      ('D', 500),
@@ -12,10 +14,22 @@ roman_numeral_map = (('M', 1000),
                      ('IV', 4),
                      ('I', 1))
 
+roman_numeral_pattern = re.compile('''
+    ^
+    M{0,3}
+    (CM|CD|D?C{0,3})
+    (XC|XL|L?X{0,3})
+    (IX|IV|V?I{0,3})
+    $
+''', re.VERBOSE)
+
 class OutOfRangeError(ValueError):
     pass
 
 class NotIntegerError(ValueError):
+    pass
+
+class InvalidRomanNumeralError(ValueError):
     pass
 
 def to_roman(n):
@@ -36,6 +50,9 @@ def to_roman(n):
 
 def from_roman(s):
     """convert Roman numeral to integer"""
+    if not roman_numeral_pattern.search(s):
+        raise InvalidRomanNumeralError('Invalid Roman numeral {0}'.format(s))
+
     result = 0
     index = 0
     for numeral, integer in roman_numeral_map:

@@ -1,7 +1,6 @@
 import time
-
 class Timer(object):
-    def _init_(self, verbose=False):
+    def __init__(self, verbose=False):
         self.verbose = verbose
 
     def _enter_(self):
