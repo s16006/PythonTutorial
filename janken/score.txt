@@ -1,0 +1,2 @@
+ :勝敗result:
+windrawwinwinlosewin
